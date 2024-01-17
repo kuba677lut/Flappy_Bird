@@ -9,9 +9,9 @@ import java.util.Random;
 
 public class ObstaclesHandler {
 
-    private AnchorPane plane;
-    private double planeHeight;
-    private double planeWidth;
+    private final AnchorPane plane;
+    private final double planeHeight;
+    private final double planeWidth;
     Random random = new Random();
 
     public ObstaclesHandler(AnchorPane plane, double planeHeight, double planeWidth) {
@@ -42,7 +42,7 @@ public class ObstaclesHandler {
         ArrayList<Rectangle> outOfScreen = new ArrayList<>();
 
         for (Rectangle rectangle: obstacles) {
-            moveRectangle(rectangle, - 0.75);
+            moveRectangle(rectangle);
 
             if(rectangle.getX() <= -rectangle.getWidth()){
                 outOfScreen.add(rectangle);
@@ -52,7 +52,7 @@ public class ObstaclesHandler {
         plane.getChildren().removeAll(outOfScreen);
     }
 
-    private void moveRectangle(Rectangle rectangle, double amount){
-        rectangle.setX(rectangle.getX() + amount);
+    private void moveRectangle(Rectangle rectangle){
+        rectangle.setX(rectangle.getX() - 0.75);
     }
 }

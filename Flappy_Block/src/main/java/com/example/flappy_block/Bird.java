@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class Bird {
 
-    private Rectangle bird;
-    private int jumpHeight;
+    private final Rectangle bird;
+    private final int jumpHeight;
     CollisionHandler collisionHandler = new CollisionHandler();
 
     public Bird(Rectangle bird, int jumpHeight) {

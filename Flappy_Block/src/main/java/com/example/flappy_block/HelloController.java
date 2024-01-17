@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
@@ -25,6 +26,9 @@ public class HelloController implements Initializable {
 
     @FXML
     private Text score;
+
+    @FXML
+    private Rectangle gora;
 
     private double accelerationTime = 0;
     private int gameTime = 0;
@@ -76,6 +80,34 @@ public class HelloController implements Initializable {
         if(pointChecker(obstacles, bird)){
             scoreCounter++;
             score.setText(String.valueOf(scoreCounter));
+            if(scoreCounter < 9){
+                plane.setStyle("-fx-background-color:  #03BA15;");
+                bird.setFill(Color.valueOf("#eeff00"));
+                gora.setFill(Color.valueOf("#478a53"));
+            }
+            if(scoreCounter > 9 && scoreCounter < 24){
+                plane.setStyle("-fx-background-color: #54BAB9;");
+                bird.setFill(Color.valueOf("#9ED2C6"));
+                gora.setFill(Color.valueOf("#E9DAC1"));
+            }
+            if(scoreCounter > 24) {
+                plane.setStyle("-fx-background-color: #F47C7C;");
+                bird.setFill(Color.valueOf("#f0b6b6"));
+                gora.setFill(Color.valueOf("#FAD4D4"));
+
+            }
+            if(scoreCounter > 49) {
+                plane.setStyle("-fx-background-color: #FF9463;");
+                bird.setFill(Color.valueOf("#FF5342"));
+                gora.setFill(Color.valueOf("#FE6D4E"));
+
+            }
+            if(scoreCounter > 99) {
+                plane.setStyle("-fx-background-color: #4C7D8E;");
+                bird.setFill(Color.valueOf("#1C284E"));
+                gora.setFill(Color.valueOf("#174D7C"));
+
+            }
         }
 
         obstaclesHandler.moveObstacles(obstacles);
@@ -87,8 +119,6 @@ public class HelloController implements Initializable {
             resetGame();
         }
     }
-
-    //Everything called once, at the game start
     private void load(){
         obstacles.addAll(obstaclesHandler.createObstacles());
     }
@@ -101,6 +131,9 @@ public class HelloController implements Initializable {
         accelerationTime = 0;
         scoreCounter = 0;
         score.setText(String.valueOf(scoreCounter));
+        plane.setStyle("-fx-background-color:  #03BA15;");
+        bird.setFill(Color.valueOf("#eeff00"));
+        gora.setFill(Color.valueOf("#478a53"));
     }
 
 
